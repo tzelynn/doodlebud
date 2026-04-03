@@ -15,6 +15,7 @@ export default function PromptCard({ prompt, locks, onToggleLock, onReroll }) {
 
   return (
     <div className="prompt-card" role="region" aria-label="Doodle prompt">
+      <span className="prompt-card__tape" aria-hidden="true" />
       <div className="prompt-card__badges">
         <span className="prompt-card__badge prompt-card__badge--difficulty">
           {prompt.difficulty === 'Quickie' && '✏️'}

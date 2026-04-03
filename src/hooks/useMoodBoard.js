@@ -46,13 +46,17 @@ export function useMoodBoard(prompt) {
     abortRef.current = controller;
 
     setLoadingImages(true);
-    const baseKeywords = `${prompt.subject} ${prompt.setting}`.replace(/^(in |at |on |under |during |inside |by )/, '');
-    const keywords = `${baseKeywords} illustration sketch drawing`;
+    const cleanSetting = prompt.setting.replace(/^(in |at |on |under |during |inside |by )/, '');
+    const subjectQuery = prompt.subject;
+    const settingQuery = cleanSetting;
     const colors = shuffled[0]?.colors || [];
 
-    fetchInspirationImages(keywords, 6, colors).then((imgs) => {
+    Promise.all([
+      fetchInspirationImages(subjectQuery, 3, colors),
+      fetchInspirationImages(settingQuery, 3, colors),
+    ]).then(([subjectImgs, sceneImgs]) => {
       if (!controller.signal.aborted) {
-        setImages(imgs);
+        setImages([...subjectImgs, ...sceneImgs]);
         setLoadingImages(false);
       }
     });
@@ -75,12 +79,18 @@ export function useMoodBoard(prompt) {
     abortRef.current = controller;
 
     setLoadingImages(true);
-    const baseKeywords = `${prompt.subject} ${prompt.setting}`.replace(/^(in |at |on |under |during |inside |by )/, '');
-    const keywords = `${baseKeywords} illustration sketch drawing`;
+    const cleanSetting = prompt.setting.replace(/^(in |at |on |under |during |inside |by )/, '');
+    const subjectQuery = prompt.subject;
+    const settingQuery = cleanSetting;
     const colors = activePalettes[0]?.colors || [];
-    fetchInspirationImages(keywords + ' ' + Math.random().toString(36).slice(2, 5), 6, colors).then((imgs) => {
+    const jitter = Math.random().toString(36).slice(2, 5);
+
+    Promise.all([
+      fetchInspirationImages(subjectQuery + ' ' + jitter, 3, colors),
+      fetchInspirationImages(settingQuery + ' ' + jitter, 3, colors),
+    ]).then(([subjectImgs, sceneImgs]) => {
       if (!controller.signal.aborted) {
-        setImages(imgs);
+        setImages([...subjectImgs, ...sceneImgs]);
         setLoadingImages(false);
       }
     });

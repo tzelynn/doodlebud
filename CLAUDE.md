@@ -18,7 +18,7 @@ DoodleBud is a single-page React app (Vite) that generates randomized doodle pro
 - `wordBanks.js` — Static data: moods (35), subjects (42), actions (41), settings (41), affinities (15), rareChallenges (18).
 - `paletteLibrary.js` — 60+ palettes, each `{ name, colors: [5 hex], moods: [tags] }`.
 - `moodMapper.js` — `extractMoods(prompt)` scans prompt text against ~60 keyword→mood-tag mappings.
-- `seedManager.js` — URL hash read/write (`#seed=...`), daily bud seed (`daily-YYYY-MM-DD`).
+- `seedManager.js` — URL hash read/write (`#seed=...`).
 - `unsplashClient.js` — Fetches from Unsplash API, falls back to generated SVG data URIs.
 
 **Hooks** (`src/hooks/`) — State management:
@@ -32,7 +32,7 @@ DoodleBud is a single-page React app (Vite) that generates randomized doodle pro
 
 ## Key Design Decisions
 
-- **Seeded PRNG (mulberry32)** — Enables deterministic prompts from seed strings for sharing and daily bud.
+- **Seeded PRNG (mulberry32)** — Enables deterministic prompts from seed strings for sharing.
 - **Plain CSS** — No CSS framework. Uses custom properties, paper texture via SVG noise filter, washi-tape dividers. Responsive breakpoints at 1024px, 768px, 480px. Reduced-motion media query supported.
 - **No router** — Single page, URL hash used only for seed sharing via `history.replaceState`.
 - **Unsplash fallback** — SVG placeholders generated with palette colors when API key is missing or requests fail.

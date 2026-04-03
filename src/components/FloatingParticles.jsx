@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const PARTICLE_CHARS = ['✧', '✿', '✶', '•', '❀', '☆'];
+const PARTICLE_CHARS = ['🐱', '🐾', '🐟', '🧶', '😺', '🐈'];
 const PARTICLE_COUNT = 12;
 
 export default function FloatingParticles() {

@@ -13,7 +13,6 @@ Built with React + Vite. Designed for GitHub Pages.
 - **Mood Board** — Auto-generated color palettes and inspiration images matched to each prompt's mood
 - **60+ Color Palettes** — Hand-curated, mood-tagged palettes with click-to-copy hex codes
 - **Inspiration Images** — Unsplash API integration with SVG placeholder fallbacks
-- **Daily Bud** — Date-seeded daily prompt, same for everyone
 - **Shareable Links** — Seed-based URL hashes for sharing specific prompts
 - **Download** — Export the full mood board as a PNG via html2canvas
 - **Rarity System** — ~5% of prompts get a sparkle badge with a bonus challenge
@@ -66,13 +65,12 @@ Push to `main` — the included GitHub Actions workflow (`.github/workflows/depl
 ```
 src/
   components/       UI components
-    Header.jsx        Logo, tagline, Today's Bud button
+    Header.jsx        Logo and tagline
     PromptCard.jsx    Prompt display with lock toggles
     ImageGrid.jsx     Masonry inspiration image grid
     PalettePanel.jsx  Color palette swatches
     ActionBar.jsx     Copy, download, share buttons
     HistoryDrawer.jsx Recent prompt history
-    DailyBud.jsx      Daily prompt banner
     FloatingParticles.jsx  Decorative CSS particles
     Toast.jsx         Toast notifications
 

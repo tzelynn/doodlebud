@@ -1,20 +1,13 @@
-export default function Header({ onDailyBud, isDailyMode }) {
+import logo from '../assets/doodlebud.PNG';
+
+export default function Header() {
   return (
     <header className="header">
       <div className="header__logo">
-        <span className="header__logo-icon" aria-hidden="true">🌸</span>
+        <img className="header__logo-img" src={logo} alt="DoodleBud logo" />
         <span className="header__logo-text">DoodleBud</span>
         <span className="header__tagline">small ideas for big doodles</span>
       </div>
-      <nav className="header__nav" aria-label="Main navigation">
-        <button
-          className={`header__btn ${isDailyMode ? 'header__btn--active' : ''}`}
-          onClick={onDailyBud}
-          aria-pressed={isDailyMode}
-        >
-          🌱 Today&apos;s Bud
-        </button>
-      </nav>
     </header>
   );
 }
